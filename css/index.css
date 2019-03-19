@@ -1,0 +1,79 @@
+body {
+  height: 100%;
+  width: 100%;
+  background: url(/img/bg.jpg) no-repeat 50%;
+  background-size: 100%;
+}
+main {
+  height: 650px;
+  width: 1000px;
+  background: #fff;
+  margin: 100px auto;
+}
+.left-panel {
+  width: 280px;
+  height: 100%;
+  background: #2e3238;
+  float: left;
+}
+.right-panel {
+  height: 100%;
+  width: 720px;
+  margin-left: 280px;
+}
+.r-top-panel {
+  height: 480px;
+  /* background: green; */
+}
+.title-wrap {
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  box-sizing: border-box;
+  line-height: 30px;
+  border-bottom: 1px solid #d6d6d6;
+}
+.r-bottom-panel {
+  height: 170px;
+  /* background: blue; */
+  border-top: 1px solid #d6d6d6;
+}
+.text-input {
+  width: 100%;
+  height: 120px;
+  outline: none;
+  overflow: auto;
+  /* background: yellow; */
+  box-sizing: border-box;
+  padding: 10px;
+}
+.btn-wrap {
+  height: 50px;
+  width: 100%;
+}
+.btn-wrap button {
+  float: right;
+  margin-right: 20px;
+  margin-top: 10px;
+  width: 120px;
+  height: 30px;
+}
+.msg-view {
+  height: 430px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+.msg-wrap {
+  margin: 20px auto;
+  text-align: right;
+}
+.msg-user {
+  margin-right: 20px;
+}
+.msg-text {
+  margin-right: 15px;
+  background: #b2e281;
+  display: inline-block;
+  padding: 9px 13px;
+}

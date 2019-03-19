@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>chat</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/reset.css">
+  </head>
+  <body>
+    <main>
+      <aside class="left-panel">
+      </aside>
+      <div class="right-panel">
+        <div class="r-top-panel">
+          <div class="title-wrap">
+            托马斯105
+          </div>
+          <div class="msg-view" id="msgView">
+
+          </div>
+        </div>
+        <div class="r-bottom-panel">
+          <pre class="text-input" contenteditable="true" id="input-text"></pre>
+          <div class="btn-wrap">
+            <button type="button" name="button" id="sendBtn">发送</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="/js/socket.io.js"></script>
+    <script>
+      document.getElementById('input-text').addEventListener('keydown', function(e) {
+        if(e.ctrlKey && e.keyCode === 13) {
+          let str = document.getElementById('input-text').innerHTML;
+          document.getElementById('input-text').innerHTML = str + '<div><br/></div>';
+          // 设置光标位置
+          let range = window.getSelection();
+          range.selectAllChildren(document.getElementById('input-text'));
+          range.collapseToEnd();
+          return false;
+        }
+        if(e.keyCode === 13) {
+          sendMsg();
+          e.preventDefault();
+        }
+      });
+      var socket = io();
+      let btn = document.getElementById('sendBtn');
+      function sendMsg() {
+        let text = document.getElementById('input-text').innerText;
+        socket.emit('send', text);
+        document.getElementById('input-text').innerText = '';
+      }
+      btn.onclick = sendMsg;
+      socket.on('hasMsg', function (data) {
+        // 插入
+        // const dom = `<div class="msg-wrap">
+        //   <div class="msg-user">
+        //     ${data.user}
+        //   </div>
+        //   <pre class="msg-text">${data.msg}</pre>
+        // </div>`;
+        let node = document.createElement("div");
+        node.innerHTML = `<div class="msg-user">
+          ${data.user}
+        </div>
+        <pre class="msg-text">${data.msg}</pre>`
+        node.classList.add('msg-wrap');
+        document.getElementById('msgView').appendChild(node);
+        let ee = document.getElementById('msgView');
+        ee.scrollTop = ee.scrollHeight;
+      })
+      // io.emit('connection');
+    </script>
+  </body>
+</html>
