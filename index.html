@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>chat</title>
-    <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/index.css">
   </head>
   <body>
     <main>
@@ -44,7 +44,8 @@
           e.preventDefault();
         }
       });
-      var socket = io();
+
+      var socket = io({transports: ['websocket']});
       let btn = document.getElementById('sendBtn');
       function sendMsg() {
         let text = document.getElementById('input-text').innerText;
