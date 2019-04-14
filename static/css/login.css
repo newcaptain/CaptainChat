@@ -53,6 +53,10 @@ body {
   border-radius: 6px;
 }
 
+.form-btn:focus {
+  outline: none;
+}
+
 .form-switch {
   text-align: center;
   display: block;
@@ -62,6 +66,6 @@ body {
 }
 
 /* 默认显示登录界面 */
-#regist {
+#register {
   display: none;
 }

@@ -12,50 +12,24 @@
 
 <body>
   <div class="box" id="box">
-    <form action="/login" method="post" class="form-wrapper" id="login">
+    <form class="form-wrapper" id="login">
       <h2 class="form-title">登录</h2>
       <input type="text" class="form-input" placeholder="用户名" name="user">
       <input type="password" class="form-input" placeholder="密码" name="password">
-      <button class="form-btn" type="submit">登录</button>
-      <a href="#" class="form-switch" id="checkToRegist">没有账户？点击注册</a>
+      <button class="form-btn" type="button" id="loginBtn">登录</button>
+      <a class="form-switch" id="checkToRegister">没有账户？点击注册</a>
     </form>
-    <form action="/regist" method="post" class="form-wrapper" id="regist">
+    <form class="form-wrapper" id="register" action="/user/register" method="post">
       <h2 class="form-title">注册</h2>
-      <input type="text" class="form-input" placeholder="用户名">
-      <input type="text" class="form-input" placeholder="密码">
-      <input type="text" class="form-input" placeholder="确认密码">
-      <button class="form-btn">注册</button>
-      <a href="#" class="form-switch" id="checkToLogin">已有账户？点击登录</a>
+      <input type="text" class="form-input" placeholder="用户名" name="user">
+      <input type="text" class="form-input" placeholder="密码" name="passowrd">
+      <input type="text" class="form-input" placeholder="确认密码" name="confirm">
+      <button class="form-btn" type="submit" id="registerBtn">注册</button>
+      <a class="form-switch" id="checkToLogin">已有账户？点击登录</a>
     </form>
   </div>
 
-  <script>
-    let login = document.getElementById('login');
-    let regist = document.getElementById('regist');
-    let box = document.getElementById('box');
-
-    document.getElementById('checkToLogin')
-              .addEventListener('click', function(e) {
-                e.preventDefault();
-                box.style.opacity = '0';
-                setTimeout(function() {
-                  regist.style.display = 'none';
-                  login.style.display = 'block';
-                  box.style.opacity = '1';
-                }, 1000);
-              });
-
-    document.getElementById('checkToRegist')
-              .addEventListener('click', function(e) {
-                e.preventDefault();
-                box.style.opacity = '0';
-                setTimeout(function() {
-                  login.style.display = 'none';
-                  regist.style.display = 'block';
-                  box.style.opacity = '1';
-                }, 1000);
-              });
-  </script>
+  <script src="js/login.js"></script>
 </body>
 
 </html>
