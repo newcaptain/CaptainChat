@@ -57,12 +57,21 @@ body {
   outline: none;
 }
 
+.form-tip {
+  color: red;
+  text-align: right;
+  font-size: 14px;
+  margin-top: 8px;
+  display: none;
+}
+
 .form-switch {
   text-align: center;
   display: block;
   margin-bottom: 20px;
   color: #428bca;
   text-decoration: none;
+  cursor: pointer;
 }
 
 /* 默认显示登录界面 */

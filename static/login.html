@@ -16,15 +16,17 @@
       <h2 class="form-title">登录</h2>
       <input type="text" class="form-input" placeholder="用户名" name="user">
       <input type="password" class="form-input" placeholder="密码" name="password">
+      <div class="form-tip" id="loginTip">用户名或密码错误</div>
       <button class="form-btn" type="button" id="loginBtn">登录</button>
       <a class="form-switch" id="checkToRegister">没有账户？点击注册</a>
     </form>
-    <form class="form-wrapper" id="register" action="/user/register" method="post">
+    <form class="form-wrapper" id="register">
       <h2 class="form-title">注册</h2>
       <input type="text" class="form-input" placeholder="用户名" name="user">
-      <input type="text" class="form-input" placeholder="密码" name="passowrd">
-      <input type="text" class="form-input" placeholder="确认密码" name="confirm">
-      <button class="form-btn" type="submit" id="registerBtn">注册</button>
+      <input type="password" class="form-input" placeholder="密码" name="password">
+      <input type="password" class="form-input" placeholder="确认密码" name="repassword">
+      <div class="form-tip" id="registerTip">用户名或密码错误</div>
+      <button class="form-btn" type="button" id="registerBtn">注册</button>
       <a class="form-switch" id="checkToLogin">已有账户？点击登录</a>
     </form>
   </div>

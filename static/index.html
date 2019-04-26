@@ -9,6 +9,27 @@
   <body>
     <main>
       <aside class="left-panel">
+        <div class="l-top">您好， peng</div>
+        <div class="l-transit">当前在线用户: 1 人</div>
+        <div class="l-panel">
+          <div class="l-panel-item">测试哈哈哈</div>
+          <div class="l-panel-item">测试哈哈哈</div>
+          <div class="l-panel-item">测试哈哈哈</div>
+
+          <div class="l-panel-item">测试哈哈哈</div>
+          <div class="l-panel-item">测试哈哈哈</div>
+          <div class="l-panel-item">测试哈哈哈</div>
+
+          <div class="l-panel-item">测试哈哈哈</div>
+          <div class="l-panel-item">测试哈哈哈</div>
+
+          <div class="l-panel-item">测试哈哈哈</div>
+          <div class="l-panel-item">测试哈哈哈</div>
+          <div class="l-panel-item">测试哈哈哈</div>
+          <div class="l-panel-item">测试哈哈哈</div>
+          <div class="l-panel-item">测试哈哈哈</div>
+          
+        </div>
       </aside>
       <div class="right-panel">
         <div class="r-top-panel">
@@ -54,13 +75,6 @@
       }
       btn.onclick = sendMsg;
       socket.on('hasMsg', function (data) {
-        // 插入
-        // const dom = `<div class="msg-wrap">
-        //   <div class="msg-user">
-        //     ${data.user}
-        //   </div>
-        //   <pre class="msg-text">${data.msg}</pre>
-        // </div>`;
         let node = document.createElement("div");
         node.innerHTML = `<div class="msg-user">
           ${data.user}
