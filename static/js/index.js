@@ -41,6 +41,14 @@ socket.on('user', function(data) {
   document.getElementById('userNum').innerText = data;
 });
 
+socket.on('userList', function(data) {
+  let html = '';
+  for (let i=0; i<data.length; i++) {
+    html += '<div class="l-panel-item">'+data[i] + '</div>'
+  }
+  document.getElementById('userList').innerHTML = html;
+});
+
 /**
  * 获取用户名
  */

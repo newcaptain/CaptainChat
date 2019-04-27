@@ -20,7 +20,6 @@ server.listen(PORT, () => {
 
 let userList = [];
 io.on('connection', socket => {
-  console.log(socket.handshake.headers.cookie);
   // let de = session.decode(socket.handshake.headers.cookie);
   // console.log(app.session);
   console.log(socket.handshake.address + '连接了');
@@ -35,14 +34,29 @@ io.on('connection', socket => {
     io.sockets.emit('hasMsg', { user: name, msg: data });
   });
   socket.on('addUser', (data) => {
-    console.log(socket.id);
-    console.log('添加用户: ' + data);
     userList.push({name: data, sid: socket.id});
     // userList[socket.id] = data;
     io.sockets.emit('user', userList.length);
+    let ul = [];
+    for (let i=0; i<userList.length; i++) {
+      ul.push(userList[i].name);
+    }
+    io.sockets.emit('userList', ul);
   });
   socket.on('disconnect', () => {
     console.log(socket.handshake.address + '断开了连接');
+    for (let i=0; i<userList.length; i++) {
+      //
+      if (socket.id === userList[i].sid) {
+        userList.splice(i, 1);
+      }
+    }
+    io.sockets.emit('user', userList.length);
+    let ul = [];
+    for (let i=0; i<userList.length; i++) {
+      ul.push(userList[i].name);
+    }
+    io.sockets.emit('userList', ul);
   });
 });
 
