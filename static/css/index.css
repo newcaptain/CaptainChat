@@ -8,14 +8,18 @@
 body {
   height: 100%;
   width: 100%;
-  background: url(/img/bg.jpg) no-repeat 50%;
-  background-size: 100%;
+  background: url(/img/bg.jpg) no-repeat;
+  background-size: cover;
 }
 main {
   height: 650px;
   width: 1000px;
   background: #fff;
-  margin: 100px auto;
+  position: absolute;
+  top: 50%;
+  margin-top: -325px;
+  left: 50%;
+  margin-left: -500px;
 }
 .left-panel {
   width: 280px;
@@ -78,13 +82,16 @@ main {
 .r-bottom-panel {
   height: 170px;
   border-top: 1px solid #d6d6d6;
+  overflow: hidden;
 }
 .text-input {
   width: 100%;
   height: 120px;
   outline: none;
-  overflow-x: visible;
-  overflow-y: scroll;
+  /* overflow-x: visible;
+  overflow-y: scroll; */
+  border-bottom: 1px solid #d6d6d6;
+  overflow: scroll;
   box-sizing: border-box;
   padding: 10px;
 }
@@ -95,7 +102,7 @@ main {
 .btn-wrap button {
   float: right;
   margin-right: 20px;
-  margin-top: 10px;
+  margin-top: 5px;
   width: 120px;
   height: 30px;
 }

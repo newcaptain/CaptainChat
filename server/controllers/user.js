@@ -8,7 +8,8 @@ module.exports = {
       // 用户未找到
       ctx.body = {code:-1, msg: '用户名或密码不正确'};
     } else {
-      ctx.session.isLogin = true;
+      // console.log(queryRes);
+      ctx.session.uname = queryRes[0].uname;
       ctx.body = {code: 0};
     }
   },
@@ -26,5 +27,9 @@ module.exports = {
         ctx.body = {code: -1, msg: '注册用户失败'};
       }
     }
+  },
+
+  async name(ctx) {
+    ctx.body = {code: 0, name: ctx.session.uname};
   }
 }

@@ -9,8 +9,8 @@
   <body>
     <main>
       <aside class="left-panel">
-        <div class="l-top">您好， peng</div>
-        <div class="l-transit">当前在线用户: 1 人</div>
+        <div class="l-top">您好， <span id="uname"></span></div>
+        <div class="l-transit">当前在线用户: <span id="userNum">0</span> 人</div>
         <div class="l-panel">
           <div class="l-panel-item">测试哈哈哈</div>
           <div class="l-panel-item">测试哈哈哈</div>
@@ -23,18 +23,18 @@
           <div class="l-panel-item">测试哈哈哈</div>
           <div class="l-panel-item">测试哈哈哈</div>
 
+          <!-- <div class="l-panel-item">测试哈哈哈</div>
           <div class="l-panel-item">测试哈哈哈</div>
           <div class="l-panel-item">测试哈哈哈</div>
           <div class="l-panel-item">测试哈哈哈</div>
-          <div class="l-panel-item">测试哈哈哈</div>
-          <div class="l-panel-item">测试哈哈哈</div>
+          <div class="l-panel-item">测试哈哈哈</div> -->
           
         </div>
       </aside>
       <div class="right-panel">
         <div class="r-top-panel">
           <div class="title-wrap">
-            托马斯105
+            公共聊天室
           </div>
           <div class="msg-view" id="msgView">
 
@@ -49,43 +49,6 @@
       </div>
     </main>
     <script src="/js/socket.io.js"></script>
-    <script>
-      document.getElementById('input-text').addEventListener('keydown', function(e) {
-        if(e.ctrlKey && e.keyCode === 13) {
-          let str = document.getElementById('input-text').innerHTML;
-          document.getElementById('input-text').innerHTML = str + '<div><br/></div>';
-          // 设置光标位置
-          let range = window.getSelection();
-          range.selectAllChildren(document.getElementById('input-text'));
-          range.collapseToEnd();
-          return false;
-        }
-        if(e.keyCode === 13) {
-          sendMsg();
-          e.preventDefault();
-        }
-      });
-
-      var socket = io({transports: ['websocket']});
-      let btn = document.getElementById('sendBtn');
-      function sendMsg() {
-        let text = document.getElementById('input-text').innerText;
-        socket.emit('send', text);
-        document.getElementById('input-text').innerText = '';
-      }
-      btn.onclick = sendMsg;
-      socket.on('hasMsg', function (data) {
-        let node = document.createElement("div");
-        node.innerHTML = `<div class="msg-user">
-          ${data.user}
-        </div>
-        <pre class="msg-text">${data.msg}</pre>`
-        node.classList.add('msg-wrap');
-        document.getElementById('msgView').appendChild(node);
-        let ee = document.getElementById('msgView');
-        ee.scrollTop = ee.scrollHeight;
-      })
-      // io.emit('connection');
-    </script>
+    <script src="/js/index.js"></script>
   </body>
 </html>

@@ -18,14 +18,32 @@ server.listen(PORT, () => {
   console.log('服务器已经打开, 正在监听' + PORT + '端口');
 });
 
+let userList = [];
 io.on('connection', socket => {
+  console.log(socket.handshake.headers.cookie);
+  // let de = session.decode(socket.handshake.headers.cookie);
+  // console.log(app.session);
   console.log(socket.handshake.address + '连接了');
   socket.on('send', (data) => {
-    io.sockets.emit('hasMsg', { user: socket.handshake.address, msg: data });
+    let name;
+    for (let i=0; i<userList.length; i++) {
+      if (userList[i].sid === socket.id) {
+        name = userList[i].name;
+        break;
+      }
+    }
+    io.sockets.emit('hasMsg', { user: name, msg: data });
+  });
+  socket.on('addUser', (data) => {
+    console.log(socket.id);
+    console.log('添加用户: ' + data);
+    userList.push({name: data, sid: socket.id});
+    // userList[socket.id] = data;
+    io.sockets.emit('user', userList.length);
   });
   socket.on('disconnect', () => {
     console.log(socket.handshake.address + '断开了连接');
-  })
+  });
 });
 
 // 配置session
@@ -37,9 +55,8 @@ app.use(bodyParser());
 // 登录拦截
 app.use(async (ctx, next) => {
   if (ctx.request.url === '/') {
-    if (ctx.session.isLogin === true) {
+    if (ctx.session.uname !== undefined) {
       // 有权进行聊天
-      console.log('helo');
       await next();
     } else {
       ctx.redirect('/login.html');
